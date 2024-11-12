@@ -255,9 +255,36 @@
                     <h1 class="display-5 mb-0">My Services</h1>
                 </div>
                 <div class="col-lg-6 text-lg-end">
-                    <a class="btn btn-primary py-3 px-5" href="">Hire Me</a>
+                    <button id="hireMeButton" class="btn btn-primary py-3 px-5">Hire Me</button>
                 </div>
             </div>
+            <script>
+                document.getElementById('hireMeButton').addEventListener('click', function() {
+                    // Replace with the actual API endpoint for sending an email
+                    fetch('https://your-email-api-endpoint.com/send-email', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            subject: 'Hiring Inquiry',
+                            message: 'Someone is interested in hiring services!',
+                            // Add more fields as needed (like user email, name, etc.)
+                        }),
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Email sent successfully!');
+                        } else {
+                            alert('Failed to send email. Please try again later.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred. Please try again later.');
+                    });
+                });
+            </script>
             <div class="row g-4">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
